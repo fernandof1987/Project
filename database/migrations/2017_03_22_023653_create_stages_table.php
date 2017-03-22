@@ -15,10 +15,12 @@ class CreateStagesTable extends Migration
     {
         Schema::create('stages', function (Blueprint $table) {
             $table->increments('id');
+
             $table->integer('project_id');
             $table->integer('task_id');
+            $table->integer('stage_number');
+            $table->string('descripton');
 
-            
             $table->foreign('project_id')->references('id')->on('projects');
             $table->foreign('task_id')->references('id')->on('tasks');
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartmentsTable extends Migration
+class CreateProjectParametersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('project_parameters', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
-            $table->string('description');
-
-            $table->foreign('company_id')->references('id')->on('companies');
-
-
+            $table->integer('project_id');
+            $table->foreign('project_id')->references('id')->on('projects');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateDepartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('project_parameters');
     }
 }
