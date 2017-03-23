@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskNotesTable extends Migration
+class CreateTaskMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateTaskNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('task_notes', function (Blueprint $table) {
+        Schema::create('task_members', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('task_id');
             $table->integer('user_id');
-            $table->integer('semaphore'); // red|yellow|green 0|1|2
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->foreign('user_id')->references('id')->on('users');
-
-            $table->text('note');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateTaskNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_notes');
+        Schema::dropIfExists('task_members');
     }
 }
