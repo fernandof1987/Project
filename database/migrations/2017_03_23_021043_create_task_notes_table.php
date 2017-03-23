@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStagesTable extends Migration
+class CreateTaskNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateStagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('stages', function (Blueprint $table) {
+        Schema::create('task_notes', function (Blueprint $table) {
             $table->increments('id');
-
             $table->integer('task_id');
-            $table->integer('stage_number');
-            $table->string('descripton');
-
-            //$table->integer('project_id');
-           // $table->foreign('project_id')->references('id')->on('projects');
             $table->foreign('task_id')->references('id')->on('tasks');
-
+            $table->text('note');
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ class CreateStagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stages');
+        Schema::dropIfExists('task_notes');
     }
 }
