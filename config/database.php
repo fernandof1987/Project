@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('DB_CONNECTION', 'pgsql'),
+    //'default' => 'pgsql_heroku',
     //'default' => 'sqlsrv',
 
     /*
@@ -62,6 +63,19 @@ return [
             'database' => env('DB_DATABASE', 'd1e9n797rgd2fq'),
             'username' => env('DB_USERNAME', 'ucenpumkcczmor'),
             'password' => env('DB_PASSWORD', 'f1d98411ee79c2f15272a715693fa585ae39d293763f434546d00db82a844de1'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
+        'pgsql_heroku' => [
+            'driver' => 'pgsql',
+            'host' => 'ec2-23-21-224-106.compute-1.amazonaws.com',
+            'port' => '5432',
+            'database' => 'd1e9n797rgd2fq',
+            'username' => 'ucenpumkcczmor',
+            'password' => 'f1d98411ee79c2f15272a715693fa585ae39d293763f434546d00db82a844de1',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
