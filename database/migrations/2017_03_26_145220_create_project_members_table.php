@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectParametersTable extends Migration
+class CreateProjectMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateProjectParametersTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_parameters', function (Blueprint $table) {
+        Schema::create('project_members', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('member_id');
             $table->integer('project_id');
+            $table->foreign('member_id')->references('id')->on('users');
             $table->foreign('project_id')->references('id')->on('projects');
-            $table->string('name');
-            $table->string('value');
+            $table->integer('role_id');
+            $table->foreign('role_id')->references('id')->on('roles');
+            //$table->decimal('time_value', 10, 2);
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateProjectParametersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_parameters');
+        Schema::dropIfExists('project_members');
     }
 }

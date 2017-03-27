@@ -19,6 +19,7 @@ class CreateTaskMembersTable extends Migration
             $table->integer('user_id');
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->decimal('time_value', 10, 2);
             $table->timestamps();
         });
     }

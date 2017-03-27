@@ -18,6 +18,7 @@ class CreateTaskParametersTable extends Migration
             $table->integer('task_id');
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->string('name');
+            $table->string('value');
             $table->timestamps();
         });
     }

@@ -16,9 +16,11 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('project_id');
-            $table->integer('task_depends_on');
+            $table->integer('task_depends_on')->nullable();
             $table->string('description');
-            
+            $table->boolean('canceled')->default(0);
+            $table->boolean('completed')->default(0);
+            $table->boolean('paused')->default(0);
             $table->foreign('project_id')->references('id')->on('projects');
             $table->foreign('task_depends_on')->references('id')->on('tasks');
 

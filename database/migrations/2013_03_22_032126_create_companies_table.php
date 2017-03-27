@@ -17,7 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->string('cnpj');
+            //$table->string('cnpj');
             $table->timestamps();
         });
     }

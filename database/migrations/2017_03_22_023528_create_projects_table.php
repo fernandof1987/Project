@@ -22,12 +22,15 @@ class CreateProjectsTable extends Migration
 
             $table->string('name');
             $table->text('description');
-            $table->text('notes');
+            $table->text('notes')->nullable();
 
-            $table->decimal('investment', 10, 2);
-            
-            $table->datetime('stipulated_date');
-            $table->datetime('final_date');
+            $table->boolean('canceled')->default(0);
+
+            $table->decimal('stipulated_investment', 10, 2)->nullable();
+            //$table->decimal('real_investment', 10, 2)->nullable();
+
+            $table->datetime('stipulated_date')->nullable();
+            $table->datetime('final_date')->nullable();
 
             $table->foreign('department_id')->references('id')->on('departments');
             $table->foreign('status_id')->references('id')->on('project_status');

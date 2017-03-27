@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('DB_CONNECTION', 'pgsql'),
+    //'default' => 'sqlsrv',
 
     /*
     |--------------------------------------------------------------------------
@@ -65,6 +66,15 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
+        ],
+                
+        'sqlsrv' => [
+            'driver'   => 'sqlsrv',
+            'host'     => 'localhost',
+            'database' => 'Project',
+            'username' => 'sa',
+            'password' => 'nett0ti',
+            'prefix'   => '',
         ],
 
     ],
