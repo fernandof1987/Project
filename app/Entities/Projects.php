@@ -14,4 +14,10 @@ class projects extends Model
     {
         return $this->hasMany('App\Entities\Tasks', 'project_id');
     }
+
+    public function stages()
+    {
+        return $this->hasMany('App\Entities\ProjectStages', 'project_id');
+    }
+
 }

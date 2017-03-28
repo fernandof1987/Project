@@ -19,6 +19,12 @@ Auth::routes();
 
 Route::get('/', 'ProjectsController@index');//->middleware('auth');
 
-Route::get('/projects', 'ProjectsController@index');//->middleware('auth');
+Route::group(['prefix'=>'projects'], function() {
+
+    Route::get('', ['as' => 'projects.index', 'uses' => 'ProjectsController@index']);//->middleware('auth');
+    Route::get('/{id}', ['as' => 'projects.show', 'uses' => 'ProjectsController@show']);//->middleware('auth');
+
+});
+
 
 Route::get('/tasks', 'TasksController@index');//->middleware('auth');

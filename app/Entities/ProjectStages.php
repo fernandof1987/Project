@@ -4,7 +4,7 @@ namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tasks extends Model
+class ProjectStages extends Model
 {
 
     public function project()
@@ -12,9 +12,7 @@ class Tasks extends Model
         return $this->belongsTo('\App\Entities\Projects');
     }
 
-    public function stages()
-    {
-        return $this->belongsTo('App\Entities\ProjectStages', 'stage_id');
+    public function tasks(){
+        return $this->hasMany('App\Entities\Tasks', 'id');
     }
-
 }

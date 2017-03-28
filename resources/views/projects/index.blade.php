@@ -7,14 +7,20 @@
         <h3>Projetos</h3>
 
         @foreach($projects as $project)
-            <b>{{ $project->name }}</b><br />
+            <b><a href="{{ route('projects.show', ['id' => $project->id ]) }}">{{ $project->name }}</a></b><br />
             Criado: {{ $project->created_at }}<br />
             Atualidado: {{ $project->updated_at }}<br />
-            N Stages <br />
-            Stage Atual <br />
-            N Total de Tarefas:
+
+            Stages:
+                {{ count($project->stages->where('completed', 1)) }} /
+                {{ count($project->stages->all()) }}
+            <br />
+
+            Tarefas:
                 {{ count($project->tasks->where('completed', 1)) }} /
-                {{ count($project->tasks->all()) }} <br />
+                {{ count($project->tasks->all()) }}
+            <br />
+            
             Membros do Projeto <br />
             Investimento: R$ {{ $project->stipulated_investment }}<br />
             Progresso por tarefas:

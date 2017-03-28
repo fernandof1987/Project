@@ -19,4 +19,10 @@ class ProjectsController extends Controller
         $projects = $this->projects->all();
         return view('projects.index', compact('projects'));
     }
+    
+    public function show($project_id)
+    {
+        $project = $this->projects->find($project_id);
+        return view('projects.show', compact('project'));
+    }
 }
