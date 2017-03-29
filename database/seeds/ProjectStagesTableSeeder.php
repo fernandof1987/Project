@@ -15,8 +15,9 @@ class ProjectStagesTableSeeder extends Seeder
 
         for($i = 0; $i < 10; $i++) {
             DB::table('project_stages')->insert([
-                'stage_number' => 1,
+                'number' => 1,
                 'project_id' => $i + 1,
+                'name' => $faker->word,
                 'description' => $faker->text,
                 //'task_id'   => rand(0, 200),
                 'completed' => 1,
@@ -26,8 +27,9 @@ class ProjectStagesTableSeeder extends Seeder
 
          for($i = 0; $i < 10; $i++) {
             DB::table('project_stages')->insert([
-                'stage_number' => 2,
+                'number' => 2,
                 'project_id' => $i + 1,
+                'name' => $faker->word,
                 'description' => $faker->text,
                 //'task_id'   => rand(0, 200),
                 //'final_date' => date ("Y-m-d"),

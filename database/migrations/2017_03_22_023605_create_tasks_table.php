@@ -17,7 +17,10 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->integer('project_id');
             $table->integer('task_depends_on')->nullable();
+            $table->string('name');
             $table->string('description');
+            $table->decimal('stipulated_time', 10, 2)->nullable();
+            $table->date('stipulated_date')->nullable();
             $table->boolean('canceled')->default(0);
             $table->boolean('completed')->default(0);
             $table->boolean('paused')->default(0);

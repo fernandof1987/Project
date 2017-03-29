@@ -8,7 +8,9 @@ class projects extends Model
 {
     //protected $connection = 'sqlsrv';
     //protected $table = 'projects';
-    //protected $fillable = ['id'];
+    protected $fillable = [
+        'name', 'description', 'notes', 'priority', 'department_id', 'status_id', 'project_owner'
+    ];
 
     public function tasks()
     {

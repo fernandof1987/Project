@@ -1,8 +1,12 @@
  <?php
-    $progress = number_format(
-            ( count($project->tasks->where('completed', 1)) /
-            count($project->tasks->all()) ) * 100, 0
-    )
+    if(count($project->tasks->all()) <> 0 ){
+        $progress = number_format(
+                ( count($project->tasks->where('completed', 1)) /
+                count($project->tasks->all()) ) * 100, 0
+        );
+    }else{
+        $progress = 0;
+    }
 ?>
 @extends('layouts.app')
 
@@ -45,29 +49,33 @@
 
         <div class="row">
 
+
             <div class="col-md-4">
                 <h3>Stages</h3>
-                @foreach($project->stages as $stage)
-                    <ul>
-                        <li>{{ $stage->stage_number }} - {{ substr($stage->description, 0, 20) }}...</li>
+                
+                <div class="list-group">
+                    @foreach($project->stages as $stage)
 
-                        <ul> <?php $arr_task = []; ?>
+                        <a href="#" class="list-group-item active"  data-toggle="tooltip" data-placement="top" title="{{ $stage->description }}">
+                            <h4 class="list-group-item-heading">{{ $stage->number }} - {{ $stage->name }}</h4>
+                        </a>
 
-                            @foreach($stage->tasks as $task)
+                        @foreach($stage->tasks as $task)
 
-                            <!-- REFATORAR ISSO AQUI!!!!! -->
-                                <?php array_push($arr_task, $task->id) ?>
+                            <a href="#" class="list-group-item"  data-toggle="tooltip" data-placement="top" title="{{ $task->description }}">
+                                <h4 class="list-group-item-heading">{{ $task->name }}</h4>
+                            </a>
 
-                                <li>{{ $task->description }}</li>
-                            @endforeach
-                        </ul>
-                    </ul>
-                @endforeach
+                        @endforeach
+
+                    @endforeach
+                </div>
+
             </div>
 
             <div class="col-md-8">
                 <h3>Tarefas s/ Stage</h3>
-                @foreach($project->tasks->whereNotIn('id', $arr_task) as $task)
+                @foreach($project->tasks as $task)
                     {{ $task->description }} <hr />
                 @endforeach
 

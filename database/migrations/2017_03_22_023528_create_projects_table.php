@@ -27,6 +27,7 @@ class CreateProjectsTable extends Migration
             $table->boolean('canceled')->default(0);
 
             $table->decimal('stipulated_investment', 10, 2)->nullable();
+            $table->decimal('stipulated time')->nullable();;
             //$table->decimal('real_investment', 10, 2)->nullable();
 
             $table->datetime('stipulated_date')->nullable();

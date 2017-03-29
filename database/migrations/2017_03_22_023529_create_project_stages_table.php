@@ -16,8 +16,12 @@ class CreateProjectStagesTable extends Migration
         Schema::create('project_stages', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('stage_number');
-            $table->string('description');
+            $table->integer('number');
+            
+            $table->string('name');
+
+            $table->text('description');
+            $table->text('notes')->nullable();
 
             $table->integer('project_id');
             $table->foreign('project_id')->references('id')->on('projects');
